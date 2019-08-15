@@ -1,0 +1,73 @@
+@navHeight:60px;
+@slideWidth:210px;
+
+#app {
+    height: 100%;
+}
+.app-container {
+    height: 100%;
+    .app-content {
+        margin-top: @navHeight;
+        .container {
+            margin-left: @slideWidth;
+        }
+    }
+}
+.slide-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: @navHeight;
+    width: @slideWidth;
+    height: 100%;
+    z-index: 6;
+    /* 修改侧边栏高度 */
+    .ant-menu {
+        height: 100%;
+    }
+}
+.navigation-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 66;
+    width: 100%;
+    height: @navHeight;
+    padding-left: 40px;
+    background: #001529;
+    .nav-logo {
+        color: #fff;
+        float: left;
+        .logo-img {
+            float: left;
+            margin-top: 10px;
+            width: 40px;
+            height:40px;
+            border-radius: 20px;
+        }
+        .title {
+            float: left;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 6px;
+            height: @navHeight;
+            line-height: @navHeight;
+        }
+    }
+    .nav-content {
+        height: @navHeight;
+        line-height: @navHeight;
+        .nav-right {
+            height: @navHeight;
+            line-height: @navHeight;
+            margin-right: 30px;
+            float: right;
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+}
+.container {
+    padding: 20px 15px;
+}

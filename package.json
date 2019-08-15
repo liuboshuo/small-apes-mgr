@@ -1,0 +1,47 @@
+{
+  "name": "small-apes-mgr",
+  "version": "1.0.0",
+  "description": "这是一个小猿码社的管理系统",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
+    "build": "webpack --progress --config build/webpack.prod.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/liuzhou/small-apes-mgr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.5.5",
+    "@babel/runtime-corejs2": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-import": "^1.12.0",
+    "babel-plugin-react-html-attrs": "^2.1.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^4.0.0-beta.3",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "antd": "^3.21.4",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^5.0.1"
+  }
+}
