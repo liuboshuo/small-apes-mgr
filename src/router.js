@@ -1,37 +1,29 @@
 import React from "react"
-import { Route,BrowserRouter,Link,Switch } from "react-router-dom"
+import { Route,BrowserRouter,Link,Switch,Redirect } from "react-router-dom"
 
-import SliderMenu from "./layout/SlideMenu"
-import NavigationBar from "./layout/NavigationBar"
 
-import HomeIndex from "./home"
+
+import HomeIndex from "./container"
+import NotFoundPage from "./container/404"
 import BlogIndex from "./blog"
 import ResumeIndex from "./resume"
 import UserIndex from "./user"
+
 
 class AppRouter extends React.Component {
     render(){
         return (
             <BrowserRouter>
-                <div class="app-container">
-                    <NavigationBar />
-                    <div class="app-content">
-                        <SliderMenu />
-                        <div class="container">
-                            {/* Switch只显示一个组件。加exact表示精确匹配/。如果不加exact，/xxx也会匹配/。  */}
-                            <Switch>
-                                {/* exact */}
-                                <Route exact path="/" component={HomeIndex} />
-                                {/* resume */}
-                                <Route exact path="/resume" component={ResumeIndex}/>
-                                {/* blog */}
-                                <Route path="/blog" component={BlogIndex}/>
-                                {/* user */}
-                                <Route path="/user" component={UserIndex}/>
-                            </Switch>
-                        </div>
-                    </div>
-                </div>
+                {/* Switch只显示一个组件。加exact表示精确匹配/。如果不加exact，/xxx也会匹配/。  */}
+                <Switch>
+                    {/* 登陆 */}
+                    <Route path="/login" component={ResumeIndex} />
+                    {/* 404 */}
+                    <Route exact path="/404" component={NotFoundPage} />
+                    {/* 路由 */}
+                    <Route path="/" component={HomeIndex} />
+                    
+                </Switch>
             </BrowserRouter>
         )
     }

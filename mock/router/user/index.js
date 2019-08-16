@@ -14,7 +14,7 @@ router.post("/api/user/add",async (ctx)=>{
     const mock = Mock.mock({
         'user_id|100-200': 1,
         'status|1': false, // 状态
-        'avatar': "@image('150x150', '#4A7BF7', 'img', 'png', 'Tiger')",  // 头像
+        'avatar': "@image('150x150', '#4A7BF7', 'img', 'png', '新用户')",  // 头像
         'create_time': '@datetime("yyyy-MM-dd HH:mm:ss")', // 创建日期
     })
     data = Object.assign(data,mock);
