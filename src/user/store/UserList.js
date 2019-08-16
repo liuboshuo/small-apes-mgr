@@ -1,19 +1,23 @@
 import { observable,action } from "mobx"
+import axios from "axios"
 
 class UserListStore {
 
-    @observable name;
+    @observable userList;
 
     constructor(){
-        this.name = "my name is user list;";
+        this.userList = [];
     }
-
 
     @action
-    setName(name){
-        this.name = name;
+    async getUserList(){
+        const config = {method:"get",url:"/api/user/list"};
+        const result = await axios(config);
+        if(result.data.code === 0){
+            const userList = result.data.data;
+            this.userList = userList;
+        }
     }
-
 }
 
 export default new UserListStore();

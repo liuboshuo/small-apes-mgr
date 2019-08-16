@@ -7,21 +7,17 @@ import { inject , observer} from "mobx-react"
 @observer // UserListStore实例和组件双向绑定
 class UserListPage extends React.Component {
 
-    push = ()=>{
-        this.props.history.push("/user/add?name=231");
-    }
-    setName = ()=>{
+    componentDidMount(){
         const {UserListStore} = this.props;
-        UserListStore.setName("ha ha ha")
+        UserListStore.getUserList();
     }
     render(){
         const {UserListStore} = this.props;
         return (
             <div>
-                <p>UserListPage</p>
-                <p>组件：{UserListStore.name}</p>
-                <Button onClick={this.push}>添加用户</Button>
-                <Button onClick={this.setName}>修改名字</Button>
+                {
+                    UserListStore.userList.map((item,index)=><p key={index}>{item.id}->{item.user_name}</p>)
+                }
             </div>
         )
     }
