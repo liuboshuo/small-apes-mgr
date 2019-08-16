@@ -23,7 +23,7 @@ export default class HomeIndex extends React.Component {
                         {/* user */}
                         <Route path="/user" component={UserIndex}/>
                         {/* 重定向404 */}
-                        <Redirect to="/404" />
+                        {/* <Redirect to="/404" /> */}
                     </div>
                 </div>
             </div>
