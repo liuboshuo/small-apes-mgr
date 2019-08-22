@@ -1,24 +1,23 @@
 import axios from "@/api/http"
 
-export function getUserList(){
-    const config = {method:"get",url:"/api/user"};
+export function getResumeList(){
+    const config = {method:"get",url:"/api/resume"};
     return axios(config).catch(error=>{
         return null
     });
 }
 
 
-export function addUser(data){
-    const config = {method:"put",url:"/api/user",data};
+export function deleteResume(id){
+    const config = {method:"delete",url:`/api/resume/${id}`};
     return axios(config).catch(error=>{
         return null
     });
 }
 
 export function updateStatus(data){
-    const config = {method:"post",url:"/api/user/update",data};
+    const config = {method:"post",url:"/api/resume/update",data};
     return axios(config).catch(error=>{
         return null
     });
 }
-

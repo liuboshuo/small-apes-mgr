@@ -8,8 +8,9 @@ class UserListStore {
     }
 
     @action
-    async addUser(){
-        
+    async addUser(data){
+        const result = await API.addUser(data);
+        return result;
     }
 }
 

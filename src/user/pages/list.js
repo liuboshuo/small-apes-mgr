@@ -14,19 +14,25 @@ class UserListPage extends React.Component {
     columns = (columns)=>{
         return columns.map((item)=>{
             item.align = "center";
-            if(item.key == "status"){
-                item.render = (item)=>{
-                    console.log(item);
-                    return <Switch checked={item} defaultChecked />
+            if(item.key == 'index'){
+                item.render = (row,data,index)=>{
+                    return <p>{index + 1}</p>
+                }
+            }else if(item.key == "status"){
+                item.render = (row,data)=>{
+                    return <Switch checked={row} onChange={()=>this.onSwitchChange(data)}/>
                 }
             }else if(item.key == "avatar"){
-                item.render = (item)=>{
-                    console.log(item);
-                    return <img src={item} alt="" class="avatar"/>
+                item.render = (row)=>{
+                    return <img src={row} alt="" class="avatar"/>
                 }
             }
             return item;
         })
+    }
+    onSwitchChange = (item)=>{
+        const {UserListStore} = this.props;
+        UserListStore.updateStatus(item.id,!item.status)
     }
     addUser = () => {
         this.props.history.push("/user/add")
@@ -44,5 +50,5 @@ class UserListPage extends React.Component {
     }
 }
 
-export default withRouter(UserListPage);
+export default UserListPage;
 

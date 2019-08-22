@@ -1,8 +1,8 @@
 import React from 'react'
-import UserListPage from "./pages/list"
-import AddUserPage from "./pages/add"
 import "./index.less"
 import { Route } from 'react-router-dom'
+import UserListPage from "./pages/list"
+import AddUserPage from "./pages/add"
 
 export default class UserIndex extends React.Component {
     render(){

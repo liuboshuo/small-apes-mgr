@@ -1,8 +1,7 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import BlogListPage from "./pages/list"
 import AddBlogPage from "./pages/add"
-
-import { Route } from 'react-router-dom'
 
 export default class BlogIndex extends React.Component {
     render(){

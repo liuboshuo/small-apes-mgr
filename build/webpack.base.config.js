@@ -36,13 +36,13 @@ module.exports = {
                 test: /\.less$/,
                 use: [
                     {
-                    loader: 'style-loader', 
+                        loader: 'style-loader', 
                     },
                     {
-                    loader: 'css-loader',
+                        loader: 'css-loader',
                     },
                     {
-                    loader: 'less-loader', // 编译 Less -> CSS
+                        loader: 'less-loader', // 编译 Less -> CSS
                     },
                 ],
             },

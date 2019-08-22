@@ -8,8 +8,13 @@ class UserListStore {
     userListColumns = [
       {
         title: '序号',
-        dataIndex: 'id',
-        key: 'id',
+        dataIndex: 'index',
+        key: 'index',
+      },
+      {
+        title: '头像',
+        dataIndex: 'avatar',
+        key: 'avatar',
       },
       {
         title: '用户名',
@@ -17,9 +22,14 @@ class UserListStore {
         key: 'user_name',
       },
       {
-        title: '头像',
-        dataIndex: 'avatar',
-        key: 'avatar',
+        title: '手机号',
+        dataIndex: 'mobile',
+        key: 'mobile',
+      },
+      {
+        title:"邮箱",
+        dataIndex: "email",
+        key:'email'
       },
       {
         title: '地址',
@@ -49,6 +59,18 @@ class UserListStore {
         if(result && result.code === 0){
             const userList = result.data;
             this.userList = userList;
+        }
+    }
+
+    @action
+    async updateStatus(id,status){
+      const result = await API.updateStatus({id,status});
+        if(result && result.code === 0){
+          const item = this.userList.find(item=>{
+            return item.id === id
+        });
+          item.status = status;
+          this.userList = [].concat(this.userList)
         }
     }
 }
