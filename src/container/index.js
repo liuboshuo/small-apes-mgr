@@ -2,10 +2,13 @@ import React from 'react'
 import SliderMenu from "@/layout/SlideMenu"
 import NavigationBar from "@/layout/NavigationBar"
 import { Route } from "react-router-dom"
-
-import BlogIndex from "@/blog"
-import ResumeIndex from "@/resume"
-import UserIndex from "@/user"
+import LoadableComponent from "@/loadable"
+const BlogIndex = LoadableComponent(()=>import("@/blog"))
+const ResumeIndex = LoadableComponent(()=>import("@/resume"))
+const UserIndex = LoadableComponent(()=>import("@/user"))
+// import BlogIndex from "@/blog"
+// import ResumeIndex from "@/resume"
+// import UserIndex from "@/user"
 
 export default class HomeIndex extends React.Component {
     render(){

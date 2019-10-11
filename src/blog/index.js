@@ -1,7 +1,11 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import BlogListPage from "./pages/list"
-import AddBlogPage from "./pages/add"
+import LoadableComponent from "@/loadable"
+const BlogListPage = LoadableComponent(()=>import("./pages/list"))
+const AddBlogPage = LoadableComponent(()=>import("./pages/add"))
+
+// import BlogListPage from "./pages/list"
+// import AddBlogPage from "./pages/add"
 
 export default class BlogIndex extends React.Component {
     render(){

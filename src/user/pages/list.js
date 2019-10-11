@@ -42,7 +42,7 @@ class UserListPage extends React.Component {
         return (
             <div class="user-list-page">
                 <div class="buttons-box">
-                    <Button type="primary" size="large" onClick={this.addUser}>添加用户</Button>
+                    <Button type="primary" onClick={this.addUser}>添加用户</Button>
                 </div>
                 <Table bordered columns={this.columns(UserListStore.userListColumns)} dataSource={UserListStore.userList} rowKey={(record=>record.id)}/>
             </div>

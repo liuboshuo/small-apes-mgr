@@ -1,6 +1,7 @@
 const path = require("path")
 const utils = require("./utils")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
     // 入口
@@ -10,7 +11,8 @@ module.exports = {
     // 出口
     output: {
         path : utils.resolve("../dist"),
-        filename: "static/js/[name].[hash].js",
+        filename: utils.assetsPath("js/[name].[hash].js") ,
+        chunkFilename: utils.assetsPath("js/[name].[chunkhash].js"),
         publicPath: "/" // 打包后的资源的访问路径前缀
     },
     // 模块
@@ -25,10 +27,21 @@ module.exports = {
                 test: /\.css$/,
                 use:[
                     {
-                        loader: 'style-loader', // 创建 <style></style>
+                        loader:MiniCssExtractPlugin.loader,
+                        options:{
+                            hmr: utils.isDev(),  // 开发环境热更新 ，然而不起作用
+                            reloadAll:true,
+                        }
                     },
+                    // {
+                    //     loader: 'style-loader', // 创建 <style></style>  // MiniCssExtractPlugin 有冲突，所以删掉
+                    // },
                     { 
                         loader: 'css-loader',  // 转换css
+                        options: { importLoaders: 1 } 
+                    },
+                    {
+                        loader: 'postcss-loader'
                     }
                 ]
             },
@@ -36,14 +49,24 @@ module.exports = {
                 test: /\.less$/,
                 use: [
                     {
-                        loader: 'style-loader', 
+                        loader:MiniCssExtractPlugin.loader,
+                        options:{
+                            hmr: utils.isDev(),  // 开发环境热更新 ，然而不起作用
+                            reloadAll:true,
+                        }
                     },
+                    // {
+                    //     loader: 'style-loader', 
+                    // },
                     {
                         loader: 'css-loader',
                     },
                     {
-                        loader: 'less-loader', // 编译 Less -> CSS
+                        loader: 'postcss-loader'
                     },
+                    {
+                        loader: 'less-loader', // 编译 Less -> CSS
+                    }
                 ],
             },
             {
@@ -51,7 +74,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000, // url-loader 包含file-loader，这里不用file-loader, 小于10000B的图片base64的方式引入，大于10000B的图片以路径的方式导入
-                    name: 'static/img/[name].[hash:7].[ext]'
+                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -59,7 +82,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000, // 小于10000B的图片base64的方式引入，大于10000B的图片以路径的方式导入
-                    name: 'static/fonts/[name].[hash:7].[ext]'
+                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
             }
         ]
@@ -77,6 +100,10 @@ module.exports = {
                 to: "static", // copy到那个目录
                 ignore: ['.*']
             }
-        ])
+        ]),
+        new MiniCssExtractPlugin({
+            filename: utils.assetsPath('css/[name].[hash].css'),
+            chunkFilename: utils.assetsPath('css/[id].[chunkhash].css'),
+        })
     ]
 }

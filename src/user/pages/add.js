@@ -24,7 +24,8 @@ class AddUserPage extends React.Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <Row>
-                <Col span={3}>
+                <Col span={9}></Col>
+                <Col span={6}>
                     <Form onSubmit={this.handleSubmit} className="login-form">
                         <Form.Item>
                             {getFieldDecorator('mobile', {
@@ -76,13 +77,14 @@ class AddUserPage extends React.Component {
                                 />,
                             )}
                             </Form.Item>
-                        <Form.Item>
+                        <Form.Item style={{textAlign:"center"}}>
                             <Button type="primary" htmlType="submit" size="large" style={{width:210}} >
                                 添加
                             </Button>
                         </Form.Item>
                     </Form>
                 </Col>
+                <Col span={9}></Col>
             </Row>
         );
     }
